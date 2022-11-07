@@ -1,0 +1,66 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Paint</title>
+	
+		<style>
+			* {
+				margin: 0;
+			}
+			
+			#output {
+				height: 100vh;
+				width: 100vw;
+			}
+		</style>
+	</head>
+
+	<body>
+		<canvas id="output"></canvas>
+
+		<script>
+			const image = new Image();
+			const canvas = document.querySelector('#output');
+			const context = canvas.getContext('2d');
+			const ratio = window.devicePixelRatio;
+
+			image.src = './img/pear.png';
+
+			canvas.width = window.innerWidth * ratio;
+			canvas.height = window.innerHeight * ratio;
+
+			let last_x = 0;
+			let last_y = 0;
+			
+			window.addEventListener('mousemove', event => {
+				const x = event.clientX * ratio - (image.width / 2);
+				const y = event.clientY * ratio - (image.height / 2);
+
+				const distance = distance_between(last_x, last_y, x, y);
+				const angle = angle_between(last_x, last_y, x, y);
+
+				for (let times = 0; times < distance; times += 1) {
+					const between_x = last_x + (Math.sin(angle) * times);
+					const between_y = last_y + (Math.cos(angle) * times);
+					
+					if (last_x > 0 && last_y > 0) {
+						context.drawImage(image, between_x, between_y);
+					}
+				}
+
+				context.drawImage(image, x, y);
+
+				last_x = x;
+				last_y = y;
+			});
+
+			function distance_between(p1, p2, q1, q2) {
+				return Math.sqrt(Math.pow(q1 - p1, 2) + Math.pow(q2 - p2, 2));
+			}
+
+			function angle_between(p1, p2, q1, q2) {
+				return Math.atan2(q1 - p1, q2 - p2)
+			}
+		</script>
+	</body>
+</html>

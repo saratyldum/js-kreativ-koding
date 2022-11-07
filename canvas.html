@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width">
+		<title></title>
+
+		<style>
+			body {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;				
+			}
+			
+			#canvas{
+				width: 100vw;
+				height: 100vh;
+				/* margin: 0 auto; */
+			}
+		</style>
+	</head>
+
+	<body>
+		<canvas id="canvas"></canvasi>
+		<script>
+			
+			const canvas = document.querySelector('#canvas');
+
+			canvas.addEventListener('mousemove', (event) => {
+				const x = event.clientX;
+				const y = event.clientY;
+
+				const xx = Math.round((x / window.innerWidth) * 360);
+				const yy = Math.round((y / window.innerHeight) * 100);
+
+
+				canvas.style.backgroundColor = `hsl(${xx}, 100%, ${yy}%)`
+			})
+		</script>
+	</body>
+</html>

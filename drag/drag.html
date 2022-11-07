@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width">
+		<title>Drag and drop</title>
+
+		<style>
+
+			body {
+				display: flex;
+				flex-wrap: wrap;
+			}
+
+			.droptarget {
+				border: 1px solid black;
+				width: 100px;
+				height: 100px;
+				/* display: inline; */
+				margin: 2em;
+			}
+
+			.dragover {
+				border: 1px red dotted;
+			}
+
+			.dragging {
+  				opacity: 0.5;
+			}
+
+		</style>
+	</head>
+
+	<body>
+		<div class="droptarget">
+			<p class="dragElement" draggable="true">Drag me</p>
+		</div>
+
+		<div class="droptarget"></div>
+		<div class="droptarget"></div>
+		<div class="droptarget"></div>
+		<div class="droptarget"></div>
+		<div class="droptarget"></div>
+		<div class="droptarget"></div>
+		<div class="droptarget"></div>
+		<div class="droptarget"></div>
+
+		<p class="indicator"></p>
+
+		<script src="./drag.js"></script>
+	</body>
+</html>

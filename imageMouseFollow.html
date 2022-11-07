@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width">
+		<title></title>
+
+		<style>
+			body {
+				margin: 0;
+				height: 100vh;
+				background-color: black;
+				overflow: hidden;
+				cursor: ;
+			}
+			.default {
+				display: none;
+			}
+			span {
+				background-image:url();
+				background-size: cover;
+				width: 200px;
+				height: 200px;
+				position: absolute;
+				background-size: cover;
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%, -50%);
+				pointer-events: none;
+			}
+
+		</style>
+	</head>
+
+	<body>
+		<span class="default"></span>
+		<script>
+			let currentImage = "url(https://source.unsplash.com/random)";
+
+			const bodyEl = document.querySelector('body');
+			
+			bodyEl.addEventListener('click', () => {
+				currentImage = "url(https://source.unsplash.com/random)";
+				console.log(currentImage);
+			});
+
+			bodyEl.addEventListener('mousemove', (event) => {
+				const xPos = event.offsetX;
+				const yPos = event.offsetY;
+				const spanEl = document.createElement('span');
+				spanEl.style.left = xPos + 'px';
+				spanEl.style.top = yPos + 'px'
+				
+				spanEl.classList.remove('default');
+				spanEl.style.backgroundImage = `${currentImage}`
+				bodyEl.appendChild(spanEl);
+			});
+
+		</script>
+	</body>
+</html>
